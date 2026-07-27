@@ -46,7 +46,7 @@ Create a Python 3.10 virtual environment:
 ```powershell
 py -3.10 -m venv .venv
 .venv\Scripts\Activate.ps1
-'''
+```
 
 ## Results
 
