@@ -6,21 +6,22 @@ venv/
 __pycache__/
 *.pyc
 
-# Downloaded datasets
+# Downloaded datasets and audio
 datasets/
 test_data/
 data/
+samples/
 
-# Trained models
-saved_model/
+# Generated trained models
 dogs_and_cats_yamnet/
+drone_detector/
 
-# Secrets and local settings
+# Local configuration
 .env
-*.key
 .vscode/
 
-# Archives and system files
+# Large files
 *.zip
+
+# Windows files
 Thumbs.db
-.DS_Store

@@ -1,38 +1,69 @@
-# YAMNet Environmental Audio Classifier
+# YAMNet Cat and Dog Audio Classifier
 
-A Python and TensorFlow transfer-learning project for classifying
-environmental audio using Google's pretrained YAMNet model.
+This is a Python audio-classification project built with TensorFlow
+and Google's pretrained YAMNet model.
 
-## Project objective
+I completed this project to learn how audio transfer learning works
+before building a custom drone-sound detector.
 
-This project adapts YAMNet to recognize selected environmental sound
-categories using transfer learning.
+## What the project does
+
+The program:
+
+1. Downloads the ESC-50 environmental-audio dataset.
+2. Selects 40 dog and 40 cat recordings.
+3. Converts every recording to mono 16 kHz audio.
+4. Uses YAMNet to extract 1,024-dimensional audio embeddings.
+5. Splits complete recordings into training, validation and test sets.
+6. Trains a custom neural network to classify dog and cat sounds.
+7. Evaluates the classifier on unseen recordings.
+8. Combines YAMNet and the custom classifier into one saved model.
+9. Uses a separate prediction program to classify new WAV files.
+
+## Project structure
+
+- `train.py` prepares the data, trains the classifier, evaluates it
+  and exports the finished model.
+- `predict.py` loads the exported model and tests a new WAV file.
+- `requirements.txt` lists the required Python packages.
+- `.gitignore` prevents generated data, models and environments from
+  being uploaded.
 
 ## Technologies
 
 - Python 3.10
-- TensorFlow
+- TensorFlow 2.11
 - TensorFlow Hub
 - TensorFlow I/O
 - YAMNet
+- pandas
+- NumPy
 
-## Status
+## Installation
 
-- [x] Python and VS Code configured
-- [x] Git repository created
-- [ ] Load and test YAMNet
-- [ ] Prepare the audio dataset
-- [ ] Extract YAMNet embeddings
-- [ ] Train the custom classifier
-- [ ] Evaluate the classifier
-- [ ] Export the trained model
-- [ ] Test predictions on new audio
+Create a Python 3.10 virtual environment:
 
-## Learning source
+```powershell
+py -3.10 -m venv .venv
+.venv\Scripts\Activate.ps1
 
-This project is based on TensorFlow's open-source tutorial:
+## Results
 
-[Transfer learning with YAMNet for environmental sound classification](https://www.tensorflow.org/tutorials/audio/transfer_learning_audio)
+### ESC-50 test dataset
 
-The implementation, experiments, documentation, and results in this
-repository are being developed as part of my own learning project.
+- Test accuracy: 99.83%
+- Sample meow prediction: cat
+
+### Independent dog-barking test
+
+I tested the exported model using a dog-barking recording that was not
+part of the TensorFlow tutorial or the ESC-50 training dataset.
+
+- Audio source: BigSoundBank, “Barking Dogs,” sound 288
+- License: CC0 / public domain
+- Predicted class: dog
+- Dog score: 99.80%
+- Cat score: 0.20%
+
+Source:
+https://bigsoundbank.com/barking-dogs-s0288.html
