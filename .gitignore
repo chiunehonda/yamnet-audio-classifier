@@ -1,0 +1,26 @@
+# Python environment
+.venv/
+venv/
+
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Downloaded datasets
+datasets/
+test_data/
+data/
+
+# Trained models
+saved_model/
+dogs_and_cats_yamnet/
+
+# Secrets and local settings
+.env
+*.key
+.vscode/
+
+# Archives and system files
+*.zip
+Thumbs.db
+.DS_Store
